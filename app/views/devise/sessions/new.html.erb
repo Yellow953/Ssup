@@ -1,0 +1,19 @@
+<div class="w-full max-w-xs mx-auto mt-20">
+  <h1 class="text-center m-4 text-green-500">Login</h1>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="bg-green-400 shadow-md rounded p-6">
+      <div class="mb-4">
+        <%= f.label :email, class:"block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      </div>
+      <div class="mb-6">
+        <%= f.label :password, class:"block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.password_field :password, autocomplete: "current-password", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      </div>
+      <div class="flex items-center justify-between">
+        <%= f.submit "Log in", class:"m-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+      </div><br>
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</div>

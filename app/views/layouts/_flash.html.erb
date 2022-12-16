@@ -1,0 +1,23 @@
+<% if flash[:success] %>
+    <div class="bg-green-200 m-5 p-5 rounded" role="alert">
+        <%= flash[:success] %>
+    </div><br>
+<% end %>
+
+<% if flash[:danger] %>
+    <div class="bg-red-200 m-5 p-5 rounded" role="alert">
+        <%= flash[:danger] %>
+    </div><br>
+<% end %>
+
+<% if flash[:warning] %>
+    <div class="bg-yellow-200 m-5 p-5 rounded" role="alert">
+        <%= flash[:warning] %>
+    </div><br>
+<% end %>
+
+<% if flash[:notice] %>
+    <div class="bg-blue-200 m-5 p-5 rounded" role="alert">
+        <%= flash[:notice] %>
+    </div><br>
+<% end %>

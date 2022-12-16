@@ -1,0 +1,16 @@
+<header class="bg-green-500">
+    <div class="flex justify-between p-5">
+        <div class="my-4">
+            <%= link_to "Ssup", root_path, class:"m-2" %>
+        </div>
+        <div class="my-4 flex">
+            <% if current_user %>
+                <%= link_to "Profile", edit_user_registration_path, class: "mx-2" %>
+                <%= button_to "Logout", destroy_user_session_path, method: :delete, class:"mx-2" %>
+            <% else %>
+                <%= link_to "Login", new_user_session_path, class:"mx-2" %>
+                <%= link_to "Register", new_user_registration_path, class:"mx-2"    %>
+            <% end %>
+        </div>
+    </div>
+</header> 
