@@ -1,0 +1,65 @@
+<%= render "layouts/header" %>
+
+<div class="w-full flex">
+    <div class="bg-gray-500 w-1/4 p-5">
+        <h1 class="text-green-500">Welcome <%= current_user.email %></h1>
+        <br><br>
+        
+        <h2>Users:</h2>
+        <% if @users.any? %>
+            <%= turbo_stream_from "users" %>
+            <div id="users">
+                <% @users.each do |user| %>
+                    <%= render user %>
+                <% end %>
+            </div>
+        <% else %>
+            <div>No Users Yet</div>
+        <% end %>
+        <br><br>
+
+        <h2>Rooms:</h2>
+        <% if @rooms.any? %>
+            <%= turbo_stream_from "rooms" %>
+            <%= render "rooms/form" %>
+            <div id="rooms">
+                <% @rooms.each do |room| %>
+                    <%= render room %>
+                <% end %>
+            </div>
+        <% else %>
+            <small>No Rooms Yet</small>
+        <% end %>
+    </div>
+    <div class="bg-gray-200 w-3/4">
+        <% if @selected_room %>
+            <div class="w-full">
+                <h1 class="text-center p-5 w-full bg-gray-400"><%= @user&.email || @selected_room.name %></h1>
+                
+                <%= turbo_stream_from @selected_room %>
+                <div id="messages" data-controller="scroll" style="overflow: auto">
+                    <% if @messages.any? %>
+                        <div class="flex-1 overflow-auto">
+                            <div class="py-2 px-3">
+                                <% @messages.each do |m| %>
+                                    <%= render m %>
+                                <% end %>
+                            </div>
+                        </div>
+                    <% else %>
+                        <div class="text-center my-56">
+                            No messages yet
+                        </div>
+                    <% end %>
+                </div>
+                <div class="w-full p-3">
+                    <%= render "messages/form" %>
+                </div>
+            </div>
+        <% else %>
+            <div class="flex h-screen justify-center items-center">
+                <h1 class="text-center">Select a user or a chat room to start sending messages</h1>
+            </div>
+        <% end %>
+    </div>
+</div>

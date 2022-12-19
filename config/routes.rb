@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :rooms
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+  }
+  get "/user/:id", to: "users#show", as: "user"
 
-  devise_scope :user do
-    get "users", to: "deviser/sessions#new"
+  resources :rooms do 
+    resources :messages
   end
-  get "/user/:id", to: "user#show", as: "user"
-
+  
   root "rooms#index" 
 end

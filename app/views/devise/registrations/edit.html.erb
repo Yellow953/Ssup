@@ -5,6 +5,14 @@
       
       <%= render "devise/shared/error_messages", resource: resource %>
 
+      <div class="field m-5">
+        <% if resource.avatar.attached? %>
+          <div class="w-32 h-32">
+            <%= image_tag(resource.avatar_thumbnail, class:"rounded-full border border-gray-100 shadow-sm") %>
+          </div>
+        <% end %>
+      </div><br>
+
       <div class="field">
         <%= f.label :email, class:"block text-gray-700 text-sm font-bold mb-2" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>

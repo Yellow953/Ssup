@@ -1,3 +1,10 @@
+<% if @selected_room && @selected_room.participant?(@selected_room, user) %>
+    <% isActive = "active" %>
+<% else %>
+    <% isActive = "" %>
+<% end %> 
+
 <div class="flex m-2">
-    <h2><%= user.email %></h2>
+    <%= link_to image_tag(user.chat_avatar, class:"rounded-full border border-gray-100 shadow-sm w-8 h-8"), user, data: { turbo: "false" } %>
+    <%= link_to user.email, user, data: { turbo: "false" }, class:"px-3 py-1" %>
 </div>

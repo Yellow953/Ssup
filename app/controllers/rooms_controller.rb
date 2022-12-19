@@ -20,10 +20,8 @@ class RoomsController < ApplicationController
         @users = User.all_except(current_user)
 
         @message = Message.new
-        @messages = @single_room.messages.order(created_at: :asc)
+        @messages = @selected_room.messages.order(created_at: :asc)
         
         render 'index'
     end
-    
-
 end

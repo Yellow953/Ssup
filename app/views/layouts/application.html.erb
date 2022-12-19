@@ -8,7 +8,22 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <style>
+      <%= ".msg-#{current_user&.id}"%> {
+        background-color: #007bff!important;
+        padding: 10px;
+      }
+      <%= ".msg-#{current_user&.id}"%> .user {
+        color: #fff!important;
+      }
+      <%= ".cont-#{current_user&.id}"%> {
+        display: flex;
+        justify-content: flex-end;
+      }
+    </style>
   </head>
 
   <body>
