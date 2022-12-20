@@ -1,3 +1,9 @@
-<div class="flex m-2">
+<div class="flex m-2 justify-between">
     <h2><%= link_to room.name, room, data: { turbo: "false" } %></h2>
+    
+    <% if (read = room.messages.where(read: false).count) != 0 %>
+        <div class="rounded-full bg-red-500 text-white w-6 h-6 text-center">
+            <%= read %>
+        </div>
+    <% end %>
 </div>

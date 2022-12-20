@@ -22,6 +22,11 @@ class RoomsController < ApplicationController
         @message = Message.new
         @messages = @selected_room.messages.order(created_at: :asc)
         
+        @selected_room.messages.where(read: false).each do |message|
+            message.read = true
+            message.save
+        end
+
         render 'index'
     end
 end
