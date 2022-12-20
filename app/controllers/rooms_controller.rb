@@ -1,9 +1,11 @@
 class RoomsController < ApplicationController
+    include RoomsHelper
     before_action :authenticate_user!
 
     def index
         @room = Room.new
-        @rooms = Room.public_rooms
+        @joined_rooms = current_user.joined_rooms
+        @rooms = search_rooms
         @users = User.all_except(current_user)
         render 'index'
     end
@@ -16,7 +18,8 @@ class RoomsController < ApplicationController
         @selected_room = Room.find(params[:id]) 
         
         @room = Room.new
-        @rooms = Room.public_rooms
+        @joined_rooms = current_user.joined_rooms
+        @rooms = search_rooms
         @users = User.all_except(current_user)
 
         @message = Message.new
@@ -29,4 +32,28 @@ class RoomsController < ApplicationController
 
         render 'index'
     end
+
+    def search
+        @rooms = search_rooms
+        respond_to do |format|
+            format.turbo_stream do
+                render turbo_stream: [
+                    turbo_stream.update('search_results', partial: 'rooms/search_results', locals: {rooms: @rooms})
+                ]
+            end
+        end
+    end
+
+    def join
+        @room = Room.find(params[:id])
+        current_user.joined_rooms << @room
+        redirect_to @room
+    end
+    
+    def leave
+        @room = Room.find(params[:id])
+        current_user.joined_rooms.delete @room
+        redirect_to root_path
+    end
+    
 end

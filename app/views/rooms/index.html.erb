@@ -30,18 +30,23 @@
         <% end %>
         <br><br>
 
-        <h2>Rooms:</h2>
-        <% if @rooms.any? %>
+        <h2>Rooms:</h2> <br>
+        <%= render "rooms/search_form" %>
+        <% if @joined_rooms.any? %>
             <%= turbo_stream_from "rooms" %>
-            <%= render "rooms/form" %>
             <div id="rooms">
-                <% @rooms.each do |room| %>
+                <% @joined_rooms.each do |room| %>
                     <%= render room %>
                 <% end %>
             </div>
         <% else %>
-            <small>No Rooms Yet</small>
+            <div class="w-full">
+                <br><br>
+                <small>No Joined Rooms Yet</small>
+                <br><br>
+            </div>
         <% end %>
+        <%= render "rooms/form" %>
     </div>
     <div class="bg-gray-200 w-3/4">
         <% if @selected_room %>

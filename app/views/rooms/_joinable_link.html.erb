@@ -1,0 +1,5 @@
+<% if current_user.has_joined_room(room) %>
+    <%= link_to "Leave", leave_room_path(room) %>
+<% else %>
+    <%= link_to "Join", join_room_path(room) %>
+<% end %>

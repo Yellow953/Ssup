@@ -6,11 +6,14 @@ class User < ApplicationRecord
   scope :all_except, -> (user) {where.not(id: user)}
   after_create_commit { broadcast_append_to "users" }
   after_update_commit { broadcast_update }
-  has_many :messages
-  has_one_attached :avatar
-
   after_commit :add_default_avatar, on: %i[create update]
 
+  has_many :messages
+  has_one_attached :avatar
+  has_many :joinables, dependent: :destroy
+  has_many :joined_rooms, through: :joinables, source: :room
+
+  enum role: %i[user admin]
   enum status: %i[offline away online] 
 
   def avatar_thumbnail
@@ -24,6 +27,11 @@ class User < ApplicationRecord
   def broadcast_update
     broadcast_replace_to "user_status", partial:"users/status", user: self  
   end
+
+  def has_joined_room(room)
+    joined_rooms.include?(room)
+  end
+  
 
   def status_to_css
     case status
