@@ -24,11 +24,8 @@ class RoomsController < ApplicationController
 
         @message = Message.new
         @messages = @selected_room.messages.order(created_at: :asc)
-        
-        @selected_room.messages.where(read: false).each do |message|
-            message.read = true
-            message.save
-        end
+
+        set_notifications_to_read
 
         render 'index'
     end
@@ -56,4 +53,10 @@ class RoomsController < ApplicationController
         redirect_to root_path
     end
     
+    private
+
+    def set_notifications_to_read
+        notifications = @selected_room.notifications_as_room.where(recipient: current_user).unread
+        notifications.update_all(read_at: Time.zone.now)
+    end
 end

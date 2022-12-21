@@ -4,18 +4,8 @@
     <div>
         <%= render "users/status", user: user %>
     </div>
-    
+
     <%= link_to user.email, user, data: { turbo: "false" }, class:"px-3 py-1" %>
-
-    <% usering = [user, current_user].sort %>
-    <% room_name = "private_#{usering[0].id}_#{usering[1].id}"%>
-    <% user_room = Room.where(name: room_name).first %>
-
-    <% if (read = user_room&.messages&.where(read: false)&.count) != 0 %>
-        <div class="rounded-full bg-red-500 text-white w-6 h-6 text-center">
-            <%= read %>
-        </div>
-    <% end %>
 </div>
 
 

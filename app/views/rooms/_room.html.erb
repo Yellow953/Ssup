@@ -1,11 +1,8 @@
 <div class="flex m-2 justify-between">
-    <h2><%= link_to room.name, room, data: { turbo: "false" } %></h2>
-    
-    <%= render "rooms/joinable_link", room: room  %>
-
-    <% if (read = room.messages.where(read: false).count) != 0 %>
-        <div class="rounded-full bg-red-500 text-white w-6 h-6 text-center">
-            <%= read %>
-        </div>
+    <%= turbo_frame_tag dom_id(room) do %>
+        <h2><%= link_to room.name, room, data: { turbo: "false" } %></h2>
     <% end %>
+
+    <%= render "rooms/notifications", room: room  %>
+    <%= render "rooms/joinable_link", room: room  %>
 </div>
