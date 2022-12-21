@@ -1,3 +1,4 @@
+<% if current_user %>
 <%= turbo_frame_tag "appearance_channel" %>
 <div id="appearance_channel"></div>
 
@@ -80,3 +81,6 @@
         <% end %>
     </div>
 </div>
+<% else %>
+    <%= render "devise/sessions/new" %>
+<% end %>

@@ -1,10 +1,10 @@
 class RoomsController < ApplicationController
     include RoomsHelper
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: %i[index]
 
     def index
         @room = Room.new
-        @joined_rooms = current_user.joined_rooms
+        @joined_rooms = current_user&.joined_rooms
         @rooms = search_rooms
         @users = User.all_except(current_user)
         render 'index'
