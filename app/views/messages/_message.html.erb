@@ -1,9 +1,10 @@
-<div class="flex mb-2 cont-<%= message.user.id %>">
-    <div class="rounded py-2 px-3 bg-white m-2 message-box msg-<%= message.user.id %>">
+<% if message.user.id != current_user&.id %>
+<div class="flex mb-3">
+    <div class="rounded py-1 px-2 bg-white">
         <% unless message.room.is_private %>
-            <div class="flex">
+            <div class="flex items-center">
                 <%= image_tag(message.user.chat_avatar, class:"rounded-full border border-gray-100 shadow-sm w-5 h-5 ") %>
-                <p class="text-sm text-green-500 user mx-2">
+                <p class="text-sm text-teal font-semibold">    
                     <%= message.user.email %>
                 </p>
             </div>
@@ -11,8 +12,26 @@
         <p class="text-sm mt-1">
             <%= message.body %>
         </p>
-        <p class="text-right text-xs text-grey-dark mt-1">
-            <small><%= time_ago_in_words(message.created_at) %> ago</small>
+        <p class="flex justify-end mt-1">
+            <span class="text-black text-xxs"><%= time_ago_in_words(message.created_at) %> ago</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="black" class="ml-1 bi bi-check-all" viewBox="0 0 16 16">
+                <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"/>
+            </svg>
         </p>
     </div>
 </div>
+<% else %>
+<div class="flex justify-end mb-3">
+    <div class="rounded px-2 bg-custom-green">
+        <p class="text-right text-sm mt-1">
+            <%= message.body %>
+        </p>
+        <p class="flex justify-end mt-1">
+            <span class="text-white text-xxs"><%= time_ago_in_words(message.created_at) %> ago</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="white" class="ml-1 bi bi-check-all" viewBox="0 0 16 16">
+                <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"/>
+            </svg>
+        </p>
+    </div>
+</div>
+<% end %>                          

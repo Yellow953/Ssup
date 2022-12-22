@@ -1,11 +1,28 @@
-<div class="flex m-2">
-    <%= link_to image_tag(user.chat_avatar, class:"rounded-full border border-gray-100 shadow-sm w-8 h-8"), user, data: { turbo: "false" } %>
-    <%= turbo_stream_from "user_status" %>
+<div class="bg-white px-3 flex items-center hover:bg-grey-lighter cursor-pointer">
     <div>
-        <%= render "users/status", user: user %>
+        <%= link_to image_tag(user.chat_avatar, class:"h-12 w-12 rounded-full"), user %>
+        <%
+=begin%>
+ <div class="status flex justify-end">
+            <%= turbo_stream_from "user_status" %>
+            <%= render "users/status", user: user %> 
+        </div> 
+<%
+=end%>
     </div>
-
-    <%= link_to user.email, user, data: { turbo: "false" }, class:"px-3 py-1" %>
+    <div class="ml-4 flex-1 border-b border-grey-lighter py-4">
+        <div class="flex items-bottom justify-between">
+            <p class="text-dark font-semibold">
+                <%= link_to user.email, user %>
+            </p>
+            <p class="text-xs text-gray-500">
+                12:00 am
+            </p>
+        </div>
+        <div class="flex items-bottom justify-between">
+            <p class="text-gray-500 mt-1 text-sm">
+                last message
+            </p>
+        </div>
+    </div>
 </div>
-
-

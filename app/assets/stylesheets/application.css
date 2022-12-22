@@ -1,4 +1,46 @@
+.bg-custom-blue{
+    background-color: rgba(61, 112, 184, 0.6);
+}
+.bg-custom-white{
+    background-color: #FFFFFF!important;
+}
+.bg-custom-grey{
+    background-color: #F5F5F5!important;
+}
+.bg-custom-green{
+    background-color: #78E378!important;
+}
+.bg-custom-blue-2{
+    background-color: rgba(61, 112, 184, 0.6)!important;
+}
+
+.text-xxs{
+    font-size: 0.6rem;
+}
+
+.h-80{
+    height: 80%;
+}
+.h-90{
+    height: 90%;
+}
+
 #messages{
     height: 560px;
     overflow-y: scroll;
+}
+.messages{
+    background: url('bg.png');
+}
+.send-message{
+    border-radius: 12px;
+    width: 55%;
+    position: fixed;
+    top: 90%;
+}
+.search-results{
+    position: fixed;
+    top: 10%;
+    width: 25%;
+    z-index: 10;
 }

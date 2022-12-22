@@ -1,8 +1,26 @@
-<div class="flex m-2 justify-between">
-    <%= turbo_frame_tag dom_id(room) do %>
-        <h2><%= link_to room.name, room, data: { turbo: "false" } %></h2>
-    <% end %>
+<%= turbo_frame_tag dom_id(room) do %>
+    <div class="bg-white px-3 flex items-center hover:bg-grey-lighter cursor-pointer">
+        <div>
+            <%= link_to image_tag("default_group.png", class:"h-12 w-12 rounded-full") %>
+        </div>
+        <div class="ml-4 flex-1 border-b border-grey-lighter py-4">
+            <div class="flex items-bottom justify-between">
+                <p class="text-dark font-semibold">
+                    <%= link_to room.name %>
+                </p>
+                <p class="text-xs text-gray-500">
+                    12:00 am
+                </p>
+            </div>
+            <div class="flex items-bottom justify-between">
+                <p class="text-gray-500 mt-1 text-sm">
+                    last message
+                </p>
+                <%= render "rooms/notifications", room: room %>
+            </div>
+        </div>
+    </div>
+<% end %>
 
-    <%= render "rooms/notifications", room: room  %>
-    <%= render "rooms/joinable_link", room: room  %>
-</div>
+
+<!--<%= render "rooms/joinable_link", room: room  %>-->

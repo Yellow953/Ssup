@@ -9,3 +9,5 @@ User.create(
         password: "qwe123"
     )
 end
+
+Room.create(name: "Testing")

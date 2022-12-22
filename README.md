@@ -11,6 +11,6 @@
 
 5 – A Browser Notification will be sent to user if a chat room has a new message -->
 
-only people who joined the public rooms get notified
+<!-- only people who joined the public rooms get notified
 red dots
-working with a single page in rails using partials
+working with a single page in rails using partials -->
