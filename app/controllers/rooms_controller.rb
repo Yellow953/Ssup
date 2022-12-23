@@ -7,11 +7,13 @@ class RoomsController < ApplicationController
         @joined_rooms = current_user&.joined_rooms
         @rooms = search_rooms
         @users = User.all_except(current_user)
+        @current_user = current_user
         render 'index'
     end
 
     def create
-        @room = Room.create(name: params["room"]["name"])        
+        @room = Room.create(name: params["room"]["name"])       
+        @current_user = current_user 
     end
     
     def show
@@ -21,6 +23,7 @@ class RoomsController < ApplicationController
         @joined_rooms = current_user.joined_rooms
         @rooms = search_rooms
         @users = User.all_except(current_user)
+        @current_user = current_user
 
         @message = Message.new
         @messages = @selected_room.messages.order(created_at: :asc)
@@ -44,13 +47,13 @@ class RoomsController < ApplicationController
     def join
         @room = Room.find(params[:id])
         current_user.joined_rooms << @room
-        redirect_to @room
+        redirect_to @room, allow_other_host: true
     end
     
     def leave
         @room = Room.find(params[:id])
         current_user.joined_rooms.delete @room
-        redirect_to root_path
+        redirect_to root_path, allow_other_host: true
     end
     
     private

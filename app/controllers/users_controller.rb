@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @users = User.all_except(current_user)
+    @current_user = current_user
     
     @room = Room.new
     @joined_rooms = current_user.joined_rooms

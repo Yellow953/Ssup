@@ -1,4 +1,4 @@
-<% if message.user.id != current_user&.id %>
+<% if message.user.id != @current_user&.id %>
 <div class="flex mb-3">
     <div class="rounded py-1 px-2 bg-white">
         <% unless message.room.is_private %>

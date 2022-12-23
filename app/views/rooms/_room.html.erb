@@ -1,12 +1,12 @@
 <%= turbo_frame_tag dom_id(room) do %>
     <div class="bg-white px-3 flex items-center hover:bg-grey-lighter cursor-pointer">
         <div>
-            <%= link_to image_tag("default_group.png", class:"h-12 w-12 rounded-full") %>
+            <%= link_to image_tag("default_group.png", class:"h-12 w-12 rounded-full"), data: { turbo: 'false' } %>
         </div>
         <div class="ml-4 flex-1 border-b border-grey-lighter py-4">
             <div class="flex items-bottom justify-between">
                 <p class="text-dark font-semibold">
-                    <%= link_to room.name %>
+                    <%= link_to room.name, data: { turbo: 'false' } %>
                 </p>
                 <p class="text-xs text-gray-500">
                     12:00 am
@@ -21,6 +21,3 @@
         </div>
     </div>
 <% end %>
-
-
-<!--<%= render "rooms/joinable_link", room: room  %>-->

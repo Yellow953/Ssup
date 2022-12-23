@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
   
+  get "/test", to: "application#test"
+
   get "/rooms/leave/:id", to: "rooms#leave", as: "leave_room"
   get "/rooms/join/:id", to: "rooms#join", as: "join_room"
 
