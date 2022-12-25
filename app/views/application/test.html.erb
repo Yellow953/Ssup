@@ -1,53 +1,73 @@
-<div class="">
-	<div class="flex items-center justify-center w-full">
-		<button class="relative flex flex-col items-center group focus:outline-none">
-			<div class="flex items-center h-16">
-				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                </svg>
-			</div>
-			<div class="absolute top-0 hidden w-screen max-w-3xl mt-16 bg-white border border-black shadow-lg group-focus:visible">
-				<div class="grid grid-cols-2 gap-10 p-8">
-					<a class="flex" href="#">
-						<span class="flex-shrink-0 w-12 h-12 bg-gray-300"></span>
-						<div class="flex flex-col ml-4">
-							<span class="text-left font-medium leading-none">Heading</span>
-							<span class="text-left mt-1 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-						</div>
-					</a>
-					<a class="flex" href="#">
-						<span class="flex-shrink-0 w-12 h-12 bg-gray-300"></span>
-						<div class="flex flex-col ml-4">
-							<span class="text-left font-medium leading-none">Heading</span>
-							<span class="text-left mt-1 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing
-								elit.</span>
-						</div>
-					</a>
-					<a class="flex" href="#">
-						<span class="flex-shrink-0 w-12 h-12 bg-gray-300"></span>
-						<div class="flex flex-col ml-4">
-							<span class="text-left font-medium leading-none">Heading</span>
-							<span class="text-left mt-1 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing
-								elit.</span>
-						</div>
-					</a>
-					<a class="flex" href="#">
-						<span class="flex-shrink-0 w-12 h-12 bg-gray-300"></span>
-						<div class="flex flex-col ml-4">
-							<span class="text-left font-medium leading-none">Heading</span>
-							<span class="text-left mt-1 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing
-								elit.</span>
-						</div>
-					</a>
-				</div>
-				<div class="flex items-center justify-between col-span-2 px-8 py-4 border-t border-black" href="#">
-					<div class="flex flex-col">
-						<span class="text-left font-medium leading-none">Heading</span>
-						<span class="text-left mt-1 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-					</div>
-					<a href="#" class="flex items-center h-10 px-3 bg-gray-200 ">Button</a>
-				</div>
-			</div>
-		</button>
-	</div>
+<style>
+/* Style the navigation menu */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav #myLinks {
+  display: none;
+}
+
+/* Style navigation menu links */
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+/* Style the hamburger menu */
+.topnav a.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* Add a grey background color on mouse-over */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the active link (or home/logo) */
+.active {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+
+<!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Top Navigation Menu -->
+<div class="topnav">
+  <a href="#home" class="active">Logo</a>
+  <!-- Navigation links (hidden by default) -->
+  <div id="myLinks">
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
+  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
 </div>
+
+<script>
+/* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>

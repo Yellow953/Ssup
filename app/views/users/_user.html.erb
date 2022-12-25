@@ -12,16 +12,24 @@
     </div>
     <div class="ml-4 flex-1 border-b border-grey-lighter py-4">
         <div class="flex items-bottom justify-between">
-            <p class="text-dark font-semibold">
+            <p class="text-dark font-custom-1">
                 <%= link_to user.email, user, data: { turbo: 'false' } %>
             </p>
-            <p class="text-xs text-gray-500">
-                12:00 am
+            <p class="text-gray-500 font-custom-2">
+                <% if user.messages.last != nil %>
+                    <%= time_ago_in_words(user.messages.last.created_at) %>
+                <% else %>
+                    N/A
+                <% end %>
             </p>
         </div>
         <div class="flex items-bottom justify-between">
-            <p class="text-gray-500 mt-1 text-sm">
-                last message
+            <p class="text-gray-500 mt-1 font-custom-2">
+                <% if user.messages.last != nil %>
+                    <%= user.messages.last.body %>
+                <% else %>
+                    N/A
+                <% end %>
             </p>
         </div>
     </div>

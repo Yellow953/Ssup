@@ -25,16 +25,26 @@
     height: 90%;
 }
 
+.w-1{
+    width: 28.5%;
+}
+.w-2{
+    width: 71.5%;
+}
+
 #messages{
     height: 560px;
     overflow-y: scroll;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 100%;
 }
 .messages{
     background: url('bg.png');
 }
 .send-message{
     border-radius: 12px;
-    width: 55%;
+    width: 58%;
     position: fixed;
     top: 90%;
 }
@@ -44,6 +54,46 @@
     width: 25%;
     z-index: 10;
 }
-.group:focus .group-focus\:visible {
-    display: block;
+.font-custom-1{
+    /* 16-Semi-Bold */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+}
+.font-custom-2{
+    /* 14-Reg */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+}
+.font-custom-3{
+    /* 16-Reg */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+.font-custom-4{
+    /* 12-Reg */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+
+
+#myLinks{
+    z-index: 10;
+    position: fixed;
+    top: 10%;
+    left: 1%;
+    width: 27%;
+    background: #FFFFFF;
 }
