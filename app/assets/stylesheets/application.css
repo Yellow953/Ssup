@@ -31,6 +31,18 @@
 .w-2{
     width: 71.5%;
 }
+.w-15{
+    width: 15%;
+}
+.w-85{
+    width: 85%;
+}
+.w-25{
+    width: 25%;
+}
+.w-75{
+    width: 75%;
+}
 
 #messages{
     height: 560px;

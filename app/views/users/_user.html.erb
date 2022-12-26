@@ -1,23 +1,33 @@
+<% if @current_user != nil %>
+    <% usering = [user, @current_user].sort
+    room_name = "private_#{usering[0].id}_#{usering[1].id}"
+    user_room = Room.where(name: room_name).first %>
+<% end %>
+
 <div class="bg-white px-3 flex items-center hover:bg-grey-lighter cursor-pointer">
-    <div>
+    <div class="ml-1 w-15">
         <%= link_to image_tag(user.chat_avatar, class:"h-12 w-12 rounded-full"), user, data: { turbo: 'false' } %>
-        <%
-=begin%>
- <div class="status flex justify-end">
-            <%= turbo_stream_from "user_status" %>
-            <%= render "users/status", user: user %> 
-        </div> 
-<%
-=end%>
     </div>
-    <div class="ml-4 flex-1 border-b border-grey-lighter py-4">
+    <div class="ml-3 flex-1 py-4 w-85">
         <div class="flex items-bottom justify-between">
-            <p class="text-dark font-custom-1">
-                <%= link_to user.email, user, data: { turbo: 'false' } %>
+            <p class="text-dark font-custom-1 w-75">
+                <%= link_to user.name, user, data: { turbo: 'false' } %>
             </p>
-            <p class="text-gray-500 font-custom-2">
+            <p class="text-gray-500 font-custom-2 mt-1 w-25 text-right">
                 <% if user.messages.last != nil %>
-                    <%= time_ago_in_words(user.messages.last.created_at) %>
+                    <% if user_room != nil %>
+                        <% if time_ago_in_words(user_room.messages.last.created_at) == "less than a minute" %>
+                            seconds ago
+                        <% else %>
+                            <%= time_ago_in_words(user_room.messages.last.created_at) %>
+                        <% end %>
+                    <% else %>
+                        <% if time_ago_in_words(user.messages.last.created_at) == "less than a minute" %>
+                            seconds ago
+                        <% else %>
+                            <%= time_ago_in_words(user.messages.last.created_at) %>
+                        <% end %>
+                    <% end %>
                 <% else %>
                     N/A
                 <% end %>
@@ -25,12 +35,28 @@
         </div>
         <div class="flex items-bottom justify-between">
             <p class="text-gray-500 mt-1 font-custom-2">
-                <% if user.messages.last != nil %>
-                    <%= user.messages.last.body %>
+                <% if user_room != nil %>
+                    <% if user_room.messages.last != nil %>
+                        <%= user_room.messages.last.body %>
+                    <% else %>
+                        N/A
+                    <% end %>
+                    <%= render "rooms/notifications", room: user_room %>
                 <% else %>
-                    N/A
+                    <% if user.messages.last != nil %>
+                        <%= user.messages.last.body %>
+                    <% else %>
+                        N/A
+                    <% end %>
                 <% end %>
             </p>
         </div>
     </div>
 </div>
+
+<!--
+<div class="status flex justify-end">
+    <%= turbo_stream_from "user_status" %>
+    <%= render "users/status", user: user %> 
+</div> 
+-->

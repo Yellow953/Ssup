@@ -20,5 +20,5 @@ working with a single page in rails using partials -->
 <!-- dont hardcode any resolution related px -->
 <!-- make the design responsive(minus mobile) -->
 <!-- fix the click event for create room -->
-show all rooms, if not in the room last message is you are not in the room
+<!-- show all rooms, if not in the room last message is you are not in the room -->
 <!-- fix the message sender showing on left bug -->
