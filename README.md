@@ -22,3 +22,11 @@ working with a single page in rails using partials -->
 <!-- fix the click event for create room -->
 <!-- show all rooms, if not in the room last message is you are not in the room -->
 <!-- fix the message sender showing on left bug -->
+
+notification:{count:1,room:"this"}
+tests
+publish project on render
+
+docker
+docker compose
+create a basic rails app inside docker

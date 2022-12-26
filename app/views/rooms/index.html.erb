@@ -29,9 +29,7 @@
                     <% if @users.any? %>
                         <%= turbo_stream_from "users" %>
                         <div id="users">
-                            <% @users.each do |user| %>
-                                <%= render user %>
-                            <% end %>
+                            <%= render "users/all", users: @users %>
                         </div>
                     <% else %>
                         <div class="m-4 text-center">
@@ -42,9 +40,7 @@
                     <% if @joined_rooms.any? %>
                         <%= turbo_stream_from "rooms" %>
                         <div id="rooms">
-                            <% @joined_rooms.each do |room| %>
-                                <%= render room %>
-                            <% end %>
+                            <%= render "rooms/all", joined_rooms: @joined_rooms %>
                         </div>
                     <% end %>
                 </div>

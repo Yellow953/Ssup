@@ -1,3 +1,4 @@
+<%= turbo_frame_tag dom_id user do %>
 <% if @current_user != nil %>
     <% usering = [user, @current_user].sort
     room_name = "private_#{usering[0].id}_#{usering[1].id}"
@@ -35,24 +36,17 @@
         </div>
         <div class="flex items-bottom justify-between">
             <p class="text-gray-500 mt-1 font-custom-2">
-                <% if user_room != nil %>
-                    <% if user_room.messages.last != nil %>
-                        <%= user_room.messages.last.body %>
-                    <% else %>
-                        N/A
-                    <% end %>
-                    <%= render "rooms/notifications", room: user_room %>
+                <% if user_room.messages.last != nil %>
+                    <%= user_room.messages.last.body %>
                 <% else %>
-                    <% if user.messages.last != nil %>
-                        <%= user.messages.last.body %>
-                    <% else %>
-                        N/A
-                    <% end %>
+                    N/A
                 <% end %>
+                <%= render "rooms/notifications", room: user_room %>
             </p>
         </div>
     </div>
 </div>
+<% end %>
 
 <!--
 <div class="status flex justify-end">

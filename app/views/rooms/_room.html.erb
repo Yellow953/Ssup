@@ -1,4 +1,4 @@
-<%= turbo_frame_tag dom_id(room) do %>
+<%= turbo_frame_tag dom_id room do %>
     <div class="bg-white px-3 flex items-center hover:bg-grey-lighter cursor-pointer">
         <div class="ml-1 w-15">
             <%= link_to image_tag("default_group.png", class:"h-12 w-12 rounded-full"), room,  data: { turbo: 'false' } %>

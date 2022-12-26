@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: Ssup_production
-  username: Ssup
-  password: <%= ENV["SSUP_DATABASE_PASSWORD"] %>
+  url: postgres://ssup_user:YH022effNtIY3BOuvs31kkHv2EHkmqPv@dpg-cekt3u4gqg4ekm87m1p0-a.frankfurt-postgres.render.com/ssup
+  database: ssup
+  username: ssup_user
+  password: YH022effNtIY3BOuvs31kkHv2EHkmqPv
